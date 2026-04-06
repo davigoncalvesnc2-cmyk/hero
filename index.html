@@ -40,9 +40,15 @@
             <div class="mini-card" style="background-image: url('https://api.dicebear.com/7.x/bottts/svg?seed=6')"></div>
         </section>
  
-        <button class="select-btn">CONFIRMAR SELEÇÃO</button>
- 
+        <button id="meuBotao" class="select-btn">CONFIRMAR SELEÇÃO</button>
+          
     </div>
  
 </body>
+<script>
+        const botao = document.querySelector('#meuBotao')
+        botao.addEventListener('click', () => {
+                alert('Personagem Selecionado!')
+        })
+</script>
 </html>
