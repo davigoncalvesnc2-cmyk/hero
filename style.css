@@ -1,33 +1,173 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
+ 
+/* container-principal */
 .game-container {
-    display: grid;
-    /* 4 colunas  iguias e 3 linhas especificas */
-    grid-template-columns: (4, 1fr);
-    grid-template-rows: 180px 180px 120px;
-    gap: 20px;
-    width: 90%;
-    max-width: 1000px;
-    padding: 20px;
+  display: grid;
+  /* 4 colunas iguais e 3 linhas especificas */
+  grid-template-columns: (4, 1fr);
+  grid-template-rows: 180px 180px 120px;
+  gap: 20px;
+  width: 90%;
+  max-width: 1000px;
+  padding: 20px;
+}
+ 
+/* Area do heroi em destaque */
+.hero-main {
+  grid-column: 1/3;
+  grid-row: 1/3;
+  background:
+    linear-gradient(45deg, #1a1a2e, #16213e),
+    url("https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=600");
+  background-blend-mode: overlay;
+  background-size: cover;
+  border: solid 1px #00f2ff;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+}
+ 
+.badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #ff0055;
+  padding: 5px 15px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+ 
+.hero-main h1{
+  font-family: "Orbitron", sans-serif;
+  font-size: 2.5rem;
+}
+ 
+.hero-main h1 span{
+  color: #00f2ff;
+ 
+}
+ 
+.stat-card{
+  grid-column: 3/5;
+  background-color: #16213e;
+  border-right: 4px #00f2ff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+ 
+.stat-card .label{
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-bottom: 10px;
 }
 
-.hero-main {
-    grid-column: 1/3;
-    /* começar na linha 1 e vai até a linha 3 (ocupa 2 colunas)*/
-    grid-row: 1/3;
-    /* começa na linha 1 e vai até a linha 3 (ocupa 2 linhas)  */
-    background: linear-gradient(45deg, #1a1a2e, #16213e),  url('https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=600');
-    background-blend-mode: overlay ;
+.stat-card .bar{
+    background-color: #2b2bc2;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.stat-card .fill{
+    height: 100%;
+    background: #00F2FF;
+    box-shadow: 0 0 10PX #00f2ff;
+
+}
+
+.stat-card .value{
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: right;
+    color: #00F2FF;
+}
+
+.hero-gallery{
+    display: grid;
+    grid-column: 1/4;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+}
+
+.mini-card{
+    background-color: #1a1a2e;
+    border: 2px solid;
+    cursor: pointer;
     background-size: cover;
-    border: solid 1px #00f2ff;
-    flex-direction: column;
-    justify-content: flex-end;
-    position: relative;
-    box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+    transition: 0.3s;
+}
+
+.mini-card:hover, .mini-card:active{
+    border-color: #00F2FF;
+    transform: translateY(-5px);
+    box-shadow: 0 5px rgba(0, 242, 255, 0.4);
+}
+
+/* botão de confirmar seleção  */
+.select-btn{
+    grid-column: 4/5 ;
+    background-color: #ff0055;
+    color: #fff;
+    border: none;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%)
+}
+
+.select-btn{
+    min-height: 50px;
+}
+
+.select-btn:hover{
+    background: #ff3377;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+
+/* Responsivo */
+.game-container{
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+}
+
+
+
+.hero-main, .stat-card, .hero-gallery, .select-btn{
+    grid-column: 1/ -1;
+
+
+}
+
+.hero-main{
+   height: 300px;
+}
+
+.hero-gallery{
+    height: 50px;
+    gap: 5px;
+    
+}
+
+.mini-card{
+    width: 100%;
+    background-size: contain;
+    height: auto;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+}
 
 }
